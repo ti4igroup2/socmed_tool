@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class RetrieveCtrl extends Controller
 {
+
+	protected $fb_token,$yt_token;
+    public function __construct()
+    {
+        $this->yt_token = "AIzaSyDxqY1SiTnm3kL_XvJ91owIJmnTox74BfA";
+    }
+
+
     public function facebook($page_name)
 	{
 		$crawler = Goutte::request('GET','https://facebook.com/'.$page_name);
@@ -47,6 +55,25 @@ class RetrieveCtrl extends Controller
             "total" => $response->graphql->user->edge_followed_by->count
         );
        return $this->json_true($data);
+	}
+	
+	public function youtube($channel_name){
+        $request = new Client();
+        $response = json_decode($request->get("https://www.googleapis.com/youtube/v3/search?part=snippet&q=".$channel_name."&type=channel&fields=items/snippet&key=".$this->yt_token)
+                    ->getBody()->getContents());
+        if(count($response->items)>0){
+            $channel_id = $response->items[0]->snippet->channelId;
+            $nama = $response->items[0]->snippet->title;
+            $response = json_decode($request->get('https://www.googleapis.com/youtube/v3/channels?part=statistics&id='.$channel_id.'&fields=items/statistics/subscriberCount&key='.$this->yt_token)
+                    ->getBody()->getContents());
+            $data = array(
+                "nama" => $nama,
+                "total" => $response->items[0]->statistics->subscriberCount
+            );
+            return $this->json_true($data);
+        }else{
+            // cath error
+        }
     }
 
 
