@@ -35,6 +35,18 @@ class RetrieveCtrl extends Controller
             "total" => $response[0]->followers_count,
         );
         return $this->json_true($data);
+	}
+	
+	public function instagram($username){
+        $request = new Client();
+        $response = json_decode($request->get("https://www.instagram.com/".$username."/?__a=1")
+                    ->getBody()->getContents());
+        // dd($response);
+        $data = array(
+            "nama" => $response->graphql->user->full_name,
+            "total" => $response->graphql->user->edge_followed_by->count
+        );
+       return $this->json_true($data);
     }
 
 

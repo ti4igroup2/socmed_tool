@@ -20,4 +20,5 @@ Route::group(['prefix' => 'api'], function(){
 	$c = "RetrieveCtrl";
 	Route::get('/facebook/{page_name}',$c.'@facebook');
 	Route::get('/twitter/{username}',$c.'@twitter');
+	Route::get('/instagram/{username}',$c.'@instagram');
 });
