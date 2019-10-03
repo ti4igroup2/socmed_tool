@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Goutte;
+use \GuzzleHttp\Client;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +24,21 @@ class RetrieveCtrl extends Controller
 		);
 		return $this->json_true($data);
 	}
+
+	public function twitter($username)
+    {
+        $request = new Client();
+        $response = json_decode($request->get("https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=".$username)
+                    ->getBody()->getContents());
+        $data = array(
+            "nama" => $response[0]->name,
+            "total" => $response[0]->followers_count,
+        );
+        return $this->json_true($data);
+    }
+
+
+
 
 	private function json_true($data){
 		$data = array(
