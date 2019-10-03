@@ -22,4 +22,5 @@ Route::group(['prefix' => 'api'], function(){
 	Route::get('/twitter/{username}',$c.'@twitter');
 	Route::get('/instagram/{username}',$c.'@instagram');
 	Route::get('/youtube/{channel_name}',$c.'@youtube');
+	Route::get('/alexa/{domain}',$c.'@alexa');
 });

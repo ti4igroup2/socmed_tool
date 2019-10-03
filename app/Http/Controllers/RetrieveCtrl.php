@@ -74,7 +74,30 @@ class RetrieveCtrl extends Controller
         }else{
             // cath error
         }
+	}
+	
+	public function alexa($domain){
+        $request = new Client();
+        $response = $request->get("http://data.alexa.com/data?cli=10&dat=snbamz&url=".$domain)
+                    ->getBody()->getContents();
+        $xml = new \SimpleXmlElement($response);
+        if (isset($xml->SD[1]->POPULARITY))
+        {
+            $data['alexa_rank'] = (int) $xml->SD[1]->POPULARITY->attributes()->TEXT;
+            // $data['alexa_rank'] = 0;
+            $data['alexa_local_rank'] = (int) $xml->SD[1]->COUNTRY->attributes()->RANK;
+            $data['locale_code'] = (String)$xml->SD[1]->COUNTRY->attributes()->CODE;
+        }
+        else
+        {
+            $data['alexa_rank'] = '0';
+            $data['alexa_local_rank'] = '0';
+            $data['locale_code'] = '-';
+            
+        }
+        return $this->json_true($data);
     }
+
 
 
 
