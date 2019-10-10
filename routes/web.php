@@ -26,6 +26,9 @@ Route::group(['prefix' => 'api'], function(){
 Route::group(['prefix'=>'socmed'],function(){
     $c = "SocmedMasterController";
     Route::get('/',$c.'@index')->name('socmed');
-   
+	Route::get('report/{id}','ReportController@index');
+    Route::post('report/getFilterReport/{id}/{action}','ReportController@getFilterReport');
+    Route::post('count_sosmed', $c.'@count_sosmed');
+    Route::post('get_sosmed', $c.'@get_sosmed');
 });
 
