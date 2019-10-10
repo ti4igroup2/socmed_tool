@@ -29,6 +29,10 @@ Route::group(['prefix'=>'socmed'],function(){
 	Route::get('report/{id}','ReportController@index');
     Route::post('report/getFilterReport/{id}/{action}','ReportController@getFilterReport');
     Route::post('count_sosmed', $c.'@count_sosmed');
-    Route::post('get_sosmed', $c.'@get_sosmed');
+	Route::post('get_sosmed', $c.'@get_sosmed');
+	Route::post('action',$c.'@action');
+    Route::post('retrieveById', 'RetrieveController@retrieveById');
+    Route::post('detail_socmed',$c.'@detail_socmed');
+    Route::delete('delete/{id}',$c.'@delete');
 });
 
