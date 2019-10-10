@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('dashboard', 'DashboardCtrl@index');
 Route::group(['prefix' => 'api'], function(){
@@ -24,3 +22,10 @@ Route::group(['prefix' => 'api'], function(){
 	Route::get('/youtube/{channel_name}',$c.'@youtube');
 	Route::get('/alexa/{domain}',$c.'@alexa');
 });
+
+Route::group(['prefix'=>'socmed'],function(){
+    $c = "SocmedMasterController";
+    Route::get('/',$c.'@index')->name('socmed');
+   
+});
+
