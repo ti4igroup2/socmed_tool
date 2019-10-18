@@ -36,3 +36,17 @@ Route::group(['prefix'=>'socmed'],function(){
     Route::delete('delete/{id}',$c.'@delete');
 });
 
+
+Route::group(['prefix'=>'group'],function(){
+    $c = "GroupMasterController";
+    Route::get('/',$c.'@index')->name('group');
+    Route::post('count_group', $c.'@count_group');
+    Route::post('get_group', $c.'@get_group');
+    Route::post('updateOrder',$c.'@updateOrder');
+    Route::post('get_groupBySocmed', $c.'@get_groupBySocmed');
+    Route::post('get_groupByAlexa', $c.'@get_groupByAlexa');
+    Route::post('detail_group',$c.'@detail_group');
+    Route::post('action',$c.'@action');
+    Route::delete('delete/{id}',$c.'@delete');
+});
+
