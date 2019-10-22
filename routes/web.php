@@ -36,6 +36,20 @@ Route::group(['prefix'=>'socmed'],function(){
     Route::delete('delete/{id}',$c.'@delete');
 });
 
+Route::group(['prefix' => 'alexa'], function () {
+    $c = "AlexaMasterController";
+    Route::get('/',$c.'@index')->name('alexa');
+    Route::post('count_alexa', $c.'@count_alexa');
+    Route::post('get_alexa', $c.'@get_alexa');
+    Route::post('action',$c.'@action');
+    Route::post('detail_alexa',$c.'@detail_alexa');
+    Route::post('retrieveAlexaById', 'RetrieveController@retrieveAlexaById');
+    Route::delete('delete/{id}',$c.'@delete');
+    Route::get('report/{id}','AlexaReportController@index');
+    Route::post('report/getFilterReport/{id}/{action}','AlexaReportController@getFilterReport');
+
+});
+
 
 Route::group(['prefix'=>'group'],function(){
     $c = "GroupMasterController";
