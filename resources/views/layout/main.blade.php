@@ -31,8 +31,8 @@
     <link id="realcss"  rel="stylesheet" href="{{config('app.url')}}/assets/assets/css/style.css">
     <link href="{{config('app.url')}}/assets/assets/plugins/material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <link href="{{config('app.url')}}/assets/assets/fonts/material/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="{{config('app.url')}}/assets/assets/plugins/bootstrap-datetimepicker/css/prettify.css" rel="stylesheet">
-    <link href="{{config('app.url')}}/assets/assets/plugins/bootstrap-datetimepicker/css/docs.css" rel="stylesheet">
+    {{-- <link href="{{config('app.url')}}/assets/assets/plugins/bootstrap-datetimepicker/css/prettify.css" rel="stylesheet">
+    <link href="{{config('app.url')}}/assets/assets/plugins/bootstrap-datetimepicker/css/docs.css" rel="stylesheet"> --}}
     <link href="{{config('app.url')}}/assets/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <link href="{{config('app.url')}}/assets/assets/plugins/select2/css/select2.min.css" rel="stylesheet">
     @if (request()->cookie('theme')=="dark")
@@ -42,10 +42,13 @@
         .amcharts-chart-div > a {
             display: none !important;
         }
-    </style>
-       
-   
-    
+        .select2-selection--single{
+            height: calc(2.55rem + 2px) !important;
+            border: 1px solid #212224;
+            color: currentColor !important;
+            background-color: transparent !important;
+        }
+    </style>    
 
 </head>
 

@@ -129,11 +129,70 @@
           <!-- /.box -->
     
       </div>
+      <div class="row">
+
+
+        <div class="col-lg-12">
+                <!-- LINE CHART -->
+                <div class="card card-info">
+                  <div class="card-header with-border">
+                    <h3 class="card-title">Local Growth Chart</h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="form-search"  method="post" class="form-inline">
+                        <label for="filter" class="form-label">Filter&nbsp;&nbsp;</label>
+                        <div class="form-group">
+                            <select name="filter" id="filter" class="form-control">
+                                    <option value="week">Last 7 Days</option>
+                                    <option value="month">This Month</option>
+                                    <option value="range">Set Range</option>
+                                </select>
+                        </div>
+                        <div class="form-group" style="display:none" id="date_range">
+                                <div class="input-group mb3">
+                                        <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">From</span>
+                                            </div>
+                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="start_range">
+                                    </div>
+                                <div class="input-group mb3">
+                                        <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon2">To</span>
+                                            </div>
+                                  <input type="text" class="form-control" aria-describedby="basic-addon2" id="end_range">
+                                 </div>    
+                                <!-- /.input group -->
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div id="Statistics-line2" class="ChartShadow" style="height:450px;width=100px;"></div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+        </div>
+</div>
     {{-- END ROW --}}
 
 
 @endsection
 
 @push('script')
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/amcharts.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/gauge.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/serial.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/light.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/pie.min.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/ammap.min.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/usaLow.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/radar.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/amchart/js/worldLow.js"></script>
+<script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+<!-- WaterBall Js -->
+
+<script src="{{config('app.url')}}/js/lodash.js"></script>
+<script src="{{config('app.url')}}/assets/assets/plugins/waterball/js/createWaterBall-jquery.js"></script>
     <script type='text/javascript' src='{{config('app.url')}}/js/alexa.js'></script>
 @endpush

@@ -1,0 +1,83 @@
+
+    @keyframes float-vidio-fade-in-left {
+        0%{
+            opacity:0;
+            -webkit-transform:translateX(200px);
+            -ms-transform:translateX(200px);
+            transform:translateX(200px)}
+        100%{
+            opacity:1;
+            -webkit-transform:translateX(0);
+            -ms-transform:translateX(0);
+            transform:translateX(0)
+        }
+      }
+    
+    .slideOutClass{
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        background: rgba(0,0,0,.75);
+        top: 100px;
+        z-index: 999999;
+        display: block;
+        animation: float-vidio-fade-in-left .25s ease forwards;
+        left: 60px;
+        cursor: pointer;
+    }
+    .slideOutClass::before{
+        content: '';
+        border-top: 2px solid #fff;
+        border-left: 2px solid #fff;
+        width: 14px;
+        position: absolute;
+        height: 14px;
+        top: 8px;
+        left: 4px;
+        cursor: pointer;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+    }
+    .slideOutClassOFF{
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        background: rgba(0,0,0,.75);
+        top: 100px;
+        z-index: 999999;
+        display: block;
+        animation: float-vidio-fade-in-left .25s ease forwards;
+        left: 90%;
+        cursor: pointer;
+    }
+    .slideOutClassOFF::before{
+        content: '';
+        border-top: 2px solid #fff;
+        border-left: 2px solid #fff;
+        width: 14px;
+        position: absolute;
+        height: 14px;
+        top: 8px;
+        left: 10px;
+        cursor: pointer;
+        transform: rotate(-50deg);
+        -webkit-transform: rotate(-50deg);
+        -moz-transform: rotate(-50deg);
+        -o-transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg);
+    }
+    
+    
+    .pluginStuck {
+        position: fixed;
+        top: 100px;
+        right: -5px;
+        transform: translateY(100%);
+        width: 80%;
+        height: 240px;
+        animation: float-vidio-fade-in-left .25s ease forwards;
+        z-index: 999;
+        }

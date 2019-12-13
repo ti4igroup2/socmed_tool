@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of PHPUnit.
  *
@@ -12,7 +12,7 @@ namespace PHPUnit\Util;
 use PHPUnit\Framework\Exception;
 
 /**
- * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ * Utility class that can print to STDOUT or write to a file.
  */
 class Printer
 {
@@ -36,35 +36,39 @@ class Printer
     /**
      * Constructor.
      *
-     * @param null|resource|string $out
+     * @param null|mixed $out
      *
      * @throws Exception
      */
     public function __construct($out = null)
     {
-        if ($out !== null) {
-            if (\is_string($out)) {
-                if (\strpos($out, 'socket://') === 0) {
-                    $out = \explode(':', \str_replace('socket://', '', $out));
-
-                    if (\count($out) !== 2) {
-                        throw new Exception;
-                    }
-
-                    $this->out = \fsockopen($out[0], $out[1]);
-                } else {
-                    if (\strpos($out, 'php://') === false && !Filesystem::createDirectory(\dirname($out))) {
-                        throw new Exception(\sprintf('Directory "%s" was not created', \dirname($out)));
-                    }
-
-                    $this->out = \fopen($out, 'wt');
-                }
-
-                $this->outTarget = $out;
-            } else {
-                $this->out = $out;
-            }
+        if ($out === null) {
+            return;
         }
+
+        if (\is_string($out) === false) {
+            $this->out = $out;
+
+            return;
+        }
+
+        if (\strpos($out, 'socket://') === 0) {
+            $out = \explode(':', \str_replace('socket://', '', $out));
+
+            if (\count($out) !== 2) {
+                throw new Exception;
+            }
+
+            $this->out = \fsockopen($out[0], $out[1]);
+        } else {
+            if (\strpos($out, 'php://') === false && !Filesystem::createDirectory(\dirname($out))) {
+                throw new Exception(\sprintf('Directory "%s" was not created', \dirname($out)));
+            }
+
+            $this->out = \fopen($out, 'wt');
+        }
+
+        $this->outTarget = $out;
     }
 
     /**

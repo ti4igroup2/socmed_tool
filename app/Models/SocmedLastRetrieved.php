@@ -11,7 +11,7 @@ class SocmedLastRetrieved extends Model
     public $timestamps = true;
     protected $fillable = [
         'socmed_id',
-        'socmed_total'
+        'socmed_total',
       ];
 
       public function masters()

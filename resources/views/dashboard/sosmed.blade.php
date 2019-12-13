@@ -40,11 +40,12 @@
                                                     <option value="0">OFF</option>
                                                 </select>
                                         </div>
-                                        <div class="form-group  mt-3">
-                                                <button type="button" id="find" title="" data-placement="left" data-toggle="tooltip" data-original-title="Search" class="btn text-dark btn-info btn-loader mr-1"><i class="fa fa-search"></i> Search</button>
-                                                <button type="button" id="reload" title="" data-placement="right" data-toggle="tooltip" data-original-title="Show All" class="btn text-dark btn-primary "><i class="fa fa-list-alt"></i> Show All</button>
-                                                <button type="button" id="addnew" onclick="showOperation()" id="reload" class="btn btn-success text-dark"><i class="fa fa-plus-square"></i> New Data</button>
-                                               
+                                        <div class="form-group col-md-12 mt-3">
+                                                <button type="button" id="reload" title="" data-placement="right" data-toggle="tooltip" data-original-title="Show All" class="btn text-dark btn-light "><i class="fa fa-list-alt"></i> Show All</button>
+                                                <span style="float:right;">
+                                                    <button type="button" id="addnew" onclick="showOperation()" id="reload" class="btn btn-success text-dark"><i class="fa fa-plus-square"></i> New Data</button>
+                                                    <button type="button" id="find" title="" data-placement="left" data-toggle="tooltip" data-original-title="Search" class="btn text-dark btn-primary btn-loader mr-1"><i class="fa fa-search"></i> Search</button>
+                                                </span>
                                             </div>
                                 </div>
                             </div>

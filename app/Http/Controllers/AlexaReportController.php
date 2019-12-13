@@ -50,6 +50,7 @@ class AlexaReportController extends Controller
             $today_local_rank = 0;
             $today_rank_percent = 0;
             $today_local_rank_percent = 0;
+            $this->growth_summary($id);
         }
   
         $data = ["rank"=>rupiah(switchNumber($today_rank)),"rank_percent"=>round(switchNumber($today_rank_percent),3),"local_rank"=>rupiah(switchNumber($today_local_rank)),"local_rank_percent"=>round(switchNumber($today_local_rank_percent),3)];
@@ -88,6 +89,46 @@ class AlexaReportController extends Controller
         $tgl = (($result[0]->withAlexa[$i]["tgl"]=="")?"not analyzing":$result[0]->withAlexa[$i]["tgl"]);
         $data[] = ["tgl"=>date("d M Y",strtotime($tgl)),"total"=>$isi,"total2"=>$isi2];
         }
+        json_true($data);
+    }
+    
+    public function getFilterReportAll($action,Request $r){
+        $monday = strtotime("last monday");
+        $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+        $end = date("Y-m-d");
+        if($action=="month"){
+            $this_sd = date('Y-m-01',strtotime('this month'));
+        }else if($action=="week"){
+            $this_sd =  date('Y-m-d', strtotime('-7 days'));
+        }else if($action == "range"){
+            $start = $r->start;
+            $this_sd = date("Y-m-d",strtotime($start));
+            $end = date("Y-m-d",strtotime($r->end));
+        }else{
+            $this_sd = date("Y-m-d");
+        }
+
+        $result = AlexaMaster::select('id','alexa_name')->with(["withAlexa" => function($q) use($this_sd,$end){
+           return $q->select(['alexa_id','alexa_local_rank'])->selectraw('cast(created_at as date) as tgl')
+            ->whereraw('cast(created_at as date) >= cast("'.$this_sd.'" as date) and cast(created_at as date) <= cast("'.$end.'"  as date)');
+        }])->where('alexa_name','!=','otosia.com')->get();
+        
+        
+         $response = [];   
+            
+        foreach($result as $index=>$v)
+        {
+            foreach($result[$index]->withAlexa as $index2=>$z)
+            {
+                $response[$index2]["label"] = date("d M Y",strtotime($z->tgl));
+                if($z->alexa_local_rank != "")
+                {
+                    $response[$index2][$v->alexa_name] = $z->alexa_local_rank;
+                }
+            }
+        }
+        
+        $data = ["result"=>$result,"detail"=>$response];
         json_true($data);
     }
 

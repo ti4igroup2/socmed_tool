@@ -66,6 +66,13 @@ function createCookie(name,value,days) {
     document.cookie = name+"="+value+expires+"; path=/; domain=.socmed.kl-youniverse.com";
 }
 
+$(".select2").select2();
+
+toRupiah=(angka)=>{
+    return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
 
     const base_url = '{{config('app.url')}}'
   $(function () {
@@ -99,7 +106,7 @@ function createCookie(name,value,days) {
                     complete: function() { $('#'+loading_div).hide(); },
                     error : function(xhr){
                     console.log(xhr.responseText);
-                    $.notify("Error, Please Check Your Data", "error");
+                    $.notify("Error, Something is Trouble Try Reload", "error");
 
                     // console.log("SERVER ERROR")
                     }

@@ -1,6 +1,6 @@
-# Laravel Facade for Goutte
+# Laravel 5 Facade for Goutte
 
-This repository implements a simple [ServiceProvider](https://laravel.com/docs/master/providers) that makes a singleton instance of the Goutte client easily accessible via a [Facade](https://laravel.com/docs/master/facades) in [Laravel](http://laravel.com). See [@FriendsOfPHP/Goutte](https://github.com/FriendsOfPHP/Goutte) for more information about the PHP web scraper and its interfaces.
+This repository implements a simple [ServiceProvider](https://laravel.com/docs/master/providers) that makes a singleton instance of the Goutte client easily accessible via a [Facade](https://laravel.com/docs/master/facades) in [Laravel 5](http://laravel.com). See [@FriendsOfPHP/Goutte](https://github.com/FriendsOfPHP/Goutte) for more information about the PHP web scraper and its interfaces.
 
 ## Installation using [Composer](https://getcomposer.org/)
 
@@ -23,8 +23,8 @@ This will add the following lines to your `composer.json` and download the proje
 
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "^5.5",
-        "weidner/goutte": "^1",
+        "laravel/framework": "5.2.*",
+        "weidner/goutte": "1.0.*",
         // ...
     },
 
@@ -97,26 +97,3 @@ Route::get('/', function() {
 ```
 
 *TIP:* If you retrieve a "Class 'Goutte' not found"-Exception try to update the autoloader by running `composer dump-autoload` in your project root.
-
-## Configuration
-
-You can customize the default request options to apply to each request of the client. Copy the default configuration to your application directory first:
-
-```sh
-php artisan vendor:publish --provider="Weidner\Goutte\GoutteServiceProvider"
-```
-
-Open the created file in the `config/goutte.php` and customize the configuration options to your liking.
-
-```php
-<?php
-
-return [
-    'client' => [
-        'allow_redirects' => false,
-        'cookies' => true,
-    ],
-];
-```
-
-Have a look into the [Guzzle Documentation](http://docs.guzzlephp.org/en/stable/request-options.html) for a full list of available options.

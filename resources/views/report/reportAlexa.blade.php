@@ -89,8 +89,8 @@
                                       <input type="text" class="form-control" aria-describedby="basic-addon2" id="end_range">
                                      </div>    
                                     <!-- /.input group -->
-                                  </div>
-                    </div>
+                            </div>
+                        </div>
                 </div>
               </div>
               <!-- /.col -->

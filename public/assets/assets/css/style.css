@@ -10597,3 +10597,26 @@ div.code-toolbar > .toolbar span:hover {
   }
 }
 /**====== File Upload css end ======**/
+.overlay-content:hover{
+  opacity: 0.4;
+}
+.overlay-content:hover ~ .overlay-img-content{
+  transition: 0.4s;
+  opacity: 1;
+  left: 20px;
+
+  
+}
+.overlay-img-content{
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  opacity: 0;
+
+}
+
+.overlay-img-detail{
+  background-color: #0386c3;
+  color: white;
+  padding: 10px;
+}

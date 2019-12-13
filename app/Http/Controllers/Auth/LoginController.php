@@ -48,7 +48,7 @@ class LoginController extends Controller
     public function redirectToProvider()
     {
         return Socialite::driver('google')
-        ->with(['hd' => 'kly.id'])
+        // ->with(['hd' => 'kly.id'])
         ->redirect();
     }
 
@@ -60,7 +60,7 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->stateless()->user();
-        if(isset($user->user['hd'])){
+        // if(isset($user->user['hd'])){
            $check = DB::table('allowed_users')->select('role')->where('user_email',$user->email)->get();
            if(count($check)>0){
         // dd($user);
@@ -71,9 +71,9 @@ class LoginController extends Controller
             $this->updateOrInsert($user,"0","user");
                dd("Users Not Allowed");
            }
-        }else{
-            dd("Email Invalid");
-        }
+        // }else{
+        //     dd("Email Invalid");
+        // }
     }
 
     private function updateOrInsert($user,$valid,$role){

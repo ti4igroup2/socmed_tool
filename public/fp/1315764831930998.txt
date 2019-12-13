@@ -1,0 +1,1 @@
+{"logged_in":{"id":"2366147013494093","name":"Teguh Sumarto","first_name":"Teguh","email":"teguh_cilikz@yahoo.com","picture":{"data":{"height":100,"is_silhouette":false,"url":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=2366147013494093&height=100&width=100&ext=1571842809&hash=AeSrt4Dq-Vw_C3kC","width":100}}},"top_post":[],"page_list":[]}

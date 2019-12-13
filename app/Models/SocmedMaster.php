@@ -12,6 +12,7 @@ class SocmedMaster extends Model
     public $timestamps = true;
     protected $fillable = ['socmed_name','socmed_type','socmed_url','socmed_status','group_id'];
 
+
     public function lastCounts()
     {
         return $this->hasOne('App\Models\SocmedLastRetrieved','socmed_id','id')->latest();

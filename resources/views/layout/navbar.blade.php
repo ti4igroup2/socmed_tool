@@ -40,7 +40,7 @@
                             <div class="pro-head">
                                 <img src="{{auth()->user()["user_photo"]}}" class="img-radius" alt="User-Profile-Image">
                                 <span>{{substr(auth()->user()["user_realname"],0,15)}}</span>
-                                {{-- <a href="{{route('logout')}}" class="dud-logout" title="Logout"> --}}
+                                <a href="{{route('logout')}}" class="dud-logout" title="Logout">
                                     <i class="feather icon-log-out"></i>
                                 </a>
                             </div>
